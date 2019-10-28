@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-firestore.js"></script>
     <link rel="stylesheet" href="assets/style.css">
 
     <!-- TODO: Add SDKs for Firebase products that you want to use
@@ -20,17 +21,22 @@
     <script>
         // Your web app's Firebase configuration
         var firebaseConfig = {
-            apiKey: "AIzaSzAzW8gYeChVVo3M2mr76XI-2fHXAeXZwKc",
-            authDomain: "todo-app-e87dd.firebaseapp.com",
-            databaseURL: "https://todo-app-e87dd.firebaseio.com",
-            projectId: "todo-app-e87dd",
-            storageBucket: "todo-app-e87dd.appspot.com",
-            messagingSenderId: "62961450759",
-            appId: "1:62961453789:web:44c85ee444598170d6e3cc"
+          apiKey: "AIzaSyDJWTclke1ydrJuralU2icmpBzwMow3168",
+          authDomain: "todoapp-a7417.firebaseapp.com",
+          databaseURL: "https://todoapp-a7417.firebaseio.com",
+          projectId: "todoapp-a7417",
+          storageBucket: "todoapp-a7417.appspot.com",
+          messagingSenderId: "886221428357",
+          appId: "1:886221428357:web:33865697a9181b4a89bbec"
         };
         // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
+
+        // referer til databasen
+        const db = firebase.firestore();
+
     </script>
+
     <script src="assets/index.js"></script>
 </body>
 
