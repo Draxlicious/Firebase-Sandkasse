@@ -1,14 +1,14 @@
 console.log('hej');
 
 // hent data
-db.collection("todos")
-    .get()
-    .then(function (snapshot) {
-        snapshot.docs.forEach(function (doc) {
-            console.log(doc.data());
-            renderTodo(doc)
-        });
-    });
+// db.collection("todos")
+//     .get()
+//     .then(function (snapshot) {
+//         snapshot.docs.forEach(function (doc) {
+//             console.log(doc.data());
+//             renderTodo(doc)
+//         });
+//     });
 
 
 const todos = document.querySelector("#todos"); // ul tagget i html dokumentet
@@ -45,9 +45,9 @@ function renderTodo(doc) {
             .update({
                 isDone: checkbox.checked
             })
-            .then(function () {
-                window.location.replace(window.location);
-            });
+        // .then(function () {
+        //     window.location.replace(window.location);
+        // });
     });
 
     remove.addEventListener("click", function (event) {
@@ -56,9 +56,44 @@ function renderTodo(doc) {
             db.collection("todos")
                 .doc(id)
                 .delete()
-                .then(function () {
-                    window.location.replace(window.location);
-                });
+            // .then(function () {
+            //     window.location.replace(window.location);
+            // });
         }
     });
+
 }
+
+
+const form = document.querySelector("#add-todo");
+// indsæt data
+form.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    // HUSK VALIDERING!!!!!
+    if( form.title.value == "" || form.content.value == ""){
+        form.style.backgroundColor = "red"
+    }
+
+    db.collection("todos")
+        .add({
+            title: form.title.value,
+            content: form.content.value,
+            isDone: form.done != undefined ? form.done.checked : false
+        })
+    // .then(function () {
+    //     window.location.replace(window.location);
+    // });
+});
+
+db.collection("todos").onSnapshot(function (snapshot) {
+    let changes = snapshot.docChanges();
+    changes.forEach(function (change) {
+        if (change.type == "added") {
+            renderTodo(change.doc);
+        } else if (change.type == "removed") {
+            let li = todos.querySelector(`[data-id="${change.doc.id}"]`);
+            todos.removeChild(li);
+        }
+    });
+});

@@ -17,10 +17,25 @@
 
 <body>
 
-    <ul id="todos">
-        
-    </ul>
+    <form id="add-todo">
+            <div>
+              <label>Titel:</label>
+              <input type="text" name="title" />
+            </div>
+            <div>
+              <label>Indhold</label>
+              <textarea name="content"></textarea>
+            </div>
+            <div>
+              <label>Afsluttet?</label>
+              <input type="checkbox" name="done" />
+            </div>
+            <button>Opret</button>
+          </form>
 
+          
+    <ul id="todos"></ul>
+    
 
     <script>
         // Your web app's Firebase configuration
