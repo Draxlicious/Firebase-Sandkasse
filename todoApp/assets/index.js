@@ -86,14 +86,14 @@ form.addEventListener("submit", function (event) {
     // });
 });
 
-db.collection("todos").onSnapshot(function (snapshot) {
-    let changes = snapshot.docChanges();
-    changes.forEach(function (change) {
-        if (change.type == "added") {
-            renderTodo(change.doc);
-        } else if (change.type == "removed") {
-            let li = todos.querySelector(`[data-id="${change.doc.id}"]`);
-            todos.removeChild(li);
-        }
-    });
-});
+// db.collection("todos").onSnapshot(function (snapshot) {
+//     let changes = snapshot.docChanges();
+//     changes.forEach(function (change) {
+//         if (change.type == "added") {
+//             renderTodo(change.doc);
+//         } else if (change.type == "removed") {
+//             let li = todos.querySelector(`[data-id="${change.doc.id}"]`);
+//             todos.removeChild(li);
+//         }
+//     });
+// });

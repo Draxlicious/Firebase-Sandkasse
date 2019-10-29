@@ -8,6 +8,7 @@
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-auth.js"></script>
     <link rel="stylesheet" href="assets/style.css">
 
     <!-- TODO: Add SDKs for Firebase products that you want to use
@@ -17,36 +18,65 @@
 
 <body>
 
-    <form id="add-todo">
-            <div>
-              <label>Titel:</label>
-              <input type="text" name="title" />
-            </div>
-            <div>
-              <label>Indhold</label>
-              <textarea name="content"></textarea>
-            </div>
-            <div>
-              <label>Afsluttet?</label>
-              <input type="checkbox" name="done" />
-            </div>
-            <button>Opret</button>
-          </form>
+    <!-- login -->
+    <form id="loginform">
+        <h3>User Login</h3>
+        <label>Email</label>
+        <input type="text" name="username">
+        <label>Password</label>
+        <input type="password" name="password">
+        <button>Login</button>
+        <p id="loginform_error"></p>
+    </form>
 
-          
+    <!-- log ud knap -->
+    <button id="logout_button">Sign Out</button>
+
+    <!-- opret bruger -->
+    <form id="signupform">
+            <h3>Register user</h3>
+            <label>Email</label>
+            <input type="text" name="username">
+            <label>Password</label>
+            <input type="password" name="password">
+            <!-- <label>Repassword</label>
+            <input type="password" name="repassword"> -->
+            <button>Sign up</button>
+            <p id="signinform_error"></p>
+    </form>
+
+
+<!-- udskriv firebase data -->
+    <form id="add-todo">
+        <div>
+            <label>Titel:</label>
+            <input type="text" name="title" />
+        </div>
+        <div>
+            <label>Indhold</label>
+            <textarea name="content"></textarea>
+        </div>
+        <div>
+            <label>Afsluttet?</label>
+            <input type="checkbox" name="done" />
+        </div>
+        <button>Opret</button>
+    </form>
+
+
     <ul id="todos"></ul>
-    
+
 
     <script>
         // Your web app's Firebase configuration
         var firebaseConfig = {
-          apiKey: "AIzaSyDJWTclke1ydrJuralU2icmpBzwMow3168",
-          authDomain: "todoapp-a7417.firebaseapp.com",
-          databaseURL: "https://todoapp-a7417.firebaseio.com",
-          projectId: "todoapp-a7417",
-          storageBucket: "todoapp-a7417.appspot.com",
-        //   messagingSenderId: "886221428357",
-        //   appId: "1:886221428357:web:33865697a9181b4a89bbec"
+            apiKey: "AIzaSyDJWTclke1ydrJuralU2icmpBzwMow3168",
+            authDomain: "todoapp-a7417.firebaseapp.com",
+            databaseURL: "https://todoapp-a7417.firebaseio.com",
+            projectId: "todoapp-a7417",
+            storageBucket: "todoapp-a7417.appspot.com",
+            //   messagingSenderId: "886221428357",
+            //   appId: "1:886221428357:web:33865697a9181b4a89bbec"
         };
         // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
@@ -54,8 +84,12 @@
         // referer til databasen
         const db = firebase.firestore();
 
+        // referer til authentication service 
+        const auth = firebase.auth();
+
     </script>
 
+    <script src="assets/auth.js"></script>
     <script src="assets/index.js"></script>
 </body>
 

@@ -1,3 +1,21 @@
 :root{
     background-color: aquamarine;
 }
+
+#loginform{
+    margin:1em;
+    display:flex;
+    flex-direction: column;
+    width:15%;
+    border: 1px solid black;
+    padding:1em;
+}
+#signupform{
+    margin:1em;
+    display:flex;
+    flex-direction: column;
+    width:15%;
+    border: 1px solid black;
+    padding:1em;
+}
+
