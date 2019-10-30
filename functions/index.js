@@ -11,6 +11,10 @@ const admin = require('firebase-admin');
 admin.initializeApp();
 
 exports.addAdminRole = functions.https.onCall((data, context) => {
+    
+    if (context.auth.token.admin != true) {
+        return { error: 'Kun en administrator kan oprette nye administratorer' }
+     } 
    // find en bruger baseret på den email vi sender med til funktionen
    // .getUserByEmail kan kun kaldes hvis requesten er en valid authenticated requst
    return admin.auth().getUserByEmail(data.email).then(user => {
