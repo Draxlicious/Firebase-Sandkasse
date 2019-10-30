@@ -1,0 +1,1 @@
+[opgave](https://github.com/rts-cmk/vanilla-on-fire/blob/master/firebase-authentication.md)

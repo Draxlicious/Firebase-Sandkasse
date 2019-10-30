@@ -85,3 +85,18 @@ auth.onAuthStateChanged(function(user) {
       // skjul elementer der kræver man er logget på
     }
   });
+
+  auth.createUserWithEmailAndPassword(email, password)
+  .then(function (cred) {
+     console.log(cred);
+     // tilføj en return handling, som giver os muligheden for at "chaine" .then()
+     return db.collection('users').doc(cred.user.uid).set({
+        fullname: signupform.fullname.value
+     })
+  })
+  .then(function () {
+     signupform.reset();
+  })
+  .catch(function (error) {
+     document.querySelector('#signinform_error').textContent = error.message;
+  });
