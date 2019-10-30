@@ -9,6 +9,7 @@
     <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-functions.js"></script>
     <link rel="stylesheet" href="assets/style.css">
 
     <!-- TODO: Add SDKs for Firebase products that you want to use
@@ -18,22 +19,24 @@
 
 <body>
 
-    <!-- login -->
-    <form id="loginform">
-        <h3>User Login</h3>
-        <label>Email</label>
-        <input type="text" name="username">
-        <label>Password</label>
-        <input type="password" name="password">
-        <button>Login</button>
-        <p id="loginform_error"></p>
-    </form>
+    <div id="container">
+        <!-- login -->
+        <form id="loginform">
+            <h3>User Login</h3>
+            <label>Email</label>
+            <input type="text" name="username">
+            <label>Password</label>
+            <input type="password" name="password">
+            <button>Login</button>
+            <p id="loginform_error"></p>
+        </form>
 
-    <!-- log ud knap -->
-    <button id="logout_button">Sign Out</button>
+        <!-- log ud knap -->
+        <button id="logout_button">Sign Out</button>
 
-    <!-- opret bruger -->
-    <form id="signupform">
+
+        <!-- opret bruger -->
+        <form id="signupform">
             <h3>Register user</h3>
             <label>Email</label>
             <input type="text" name="username">
@@ -41,15 +44,22 @@
             <input type="password" name="password">
             <label>Fulde Navn</label>
             <input type="text" name="fullname">
-            
+
             <!-- <label>Repassword</label>
             <input type="password" name="repassword"> -->
             <button>Sign up</button>
             <p id="signinform_error"></p>
-    </form>
+        </form>
 
+        <form id="adminform">
+            <h3>opret admin</h3>
+            <label>Email</label>
+            <input type="email" name="username">
+            <button>Opret Admin</button>
+        </form>
+    </div>
 
-<!-- udskriv firebase data -->
+    <!-- udskriv firebase data -->
     <form id="add-todo">
         <div>
             <label>Titel:</label>
@@ -89,6 +99,9 @@
 
         // referer til authentication service 
         const auth = firebase.auth();
+
+        // referer til firebase functions
+        const functions = firebase.functions();
 
     </script>
 

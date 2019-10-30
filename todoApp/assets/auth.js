@@ -84,7 +84,14 @@ auth.onAuthStateChanged(function (user) {
             console.log(doc.data().fullname);
           }
         });
-      },
+
+        user.getIdTokenResult().then(function (idTokenResult) {
+          console.log(idTokenResult.claims); // se alle de "claims" der er knyttet til brugeren
+          user.admin = idTokenResult.claims.admin;
+
+          // her køres alt det kode der før blev udført når en bruger er logget ind.
+        },
+        )},
       function (error) {
         console.log(error.message);
         //   Missing or insufficient permissions.

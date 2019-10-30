@@ -86,14 +86,18 @@ form.addEventListener("submit", function (event) {
     // });
 });
 
-// db.collection("todos").onSnapshot(function (snapshot) {
-//     let changes = snapshot.docChanges();
-//     changes.forEach(function (change) {
-//         if (change.type == "added") {
-//             renderTodo(change.doc);
-//         } else if (change.type == "removed") {
-//             let li = todos.querySelector(`[data-id="${change.doc.id}"]`);
-//             todos.removeChild(li);
-//         }
-//     });
-// });
+const adminform = document.querySelector('#adminform');
+adminform.addEventListener('submit', function (event) {
+   event.preventDefault();
+   const email = adminform.username.value; // grib email fra formen
+   const addAdminRole = functions.httpsCallable('addAdminRole'); // referer til server funktionen
+
+   // kald funktionen med emailen som "data"
+   addAdminRole({ email: email })
+      .then(function (result) {
+         console.log(result);
+      })
+      .catch(function (error) {
+         console.log(error);
+      })
+});
